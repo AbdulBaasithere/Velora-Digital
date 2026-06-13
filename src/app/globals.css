@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0e1a;
+  --color-foreground: #f0f2f8;
+  --color-primary: #6c5ce7;
+  --color-primary-light: #a29bfe;
+  --color-primary-dark: #4a3db8;
+  --color-secondary: #0d1b3e;
+  --color-accent: #00cec9;
+  --color-surface: #111827;
+  --color-surface-light: #1a2340;
+  --color-surface-lighter: #222d4a;
+  --color-muted: #8892b0;
+  --color-border: rgba(108, 92, 231, 0.2);
+  --color-gradient-start: #6c5ce7;
+  --color-gradient-mid: #a29bfe;
+  --color-gradient-end: #00cec9;
+  --font-sans: var(--font-inter);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6c5ce7, #a29bfe);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a29bfe, #6c5ce7);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: #0a0e1a;
+  color: #f0f2f8;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.3), 0 0 60px rgba(108, 92, 231, 0.1);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(108, 92, 231, 0.5), 0 0 80px rgba(108, 92, 231, 0.2);
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+}
+
+.glass-light {
+  background: rgba(26, 35, 64, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 92, 231, 0.1);
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Pulse animation for CTA */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(108, 92, 231, 0.7), 0 0 80px rgba(108, 92, 231, 0.3);
+  }
+}
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(108, 92, 231, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 92, 231, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Radial glow backgrounds */
+.radial-glow {
+  background: radial-gradient(ellipse at 50% 0%, rgba(108, 92, 231, 0.15) 0%, transparent 60%);
+}
+
+.radial-glow-right {
+  background: radial-gradient(ellipse at 100% 50%, rgba(162, 155, 254, 0.1) 0%, transparent 50%);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(108, 92, 231, 0.4);
+  color: #fff;
+}
