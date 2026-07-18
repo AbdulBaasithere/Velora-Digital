@@ -45,3 +45,6 @@ leads.json
 next-env.d.ts
 
 .vercel
+
+# Local Netlify folder
+.netlify
