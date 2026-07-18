@@ -7,6 +7,7 @@ import Logo from "@/components/Logo";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
+  { label: "AI Lead Assistant", href: "/never-miss-a-lead" },
   { label: "Pricing", href: "#pricing" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Testimonials", href: "#testimonials" },
@@ -75,15 +76,16 @@ export default function Navbar() {
               <Logo />
             </motion.a>
 
-            {/* Desktop Links */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
-                    handleClick(link.href);
+                    if (link.href.startsWith("#")) {
+                      e.preventDefault();
+                      handleClick(link.href);
+                    }
                   }}
                   className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                     activeSection === link.href.replace("#", "")
@@ -192,8 +194,12 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => {
-                      e.preventDefault();
-                      handleClick(link.href);
+                      if (link.href.startsWith("#")) {
+                        e.preventDefault();
+                        handleClick(link.href);
+                      } else {
+                        setIsMobileOpen(false);
+                      }
                     }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
